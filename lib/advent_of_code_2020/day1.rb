@@ -1,14 +1,14 @@
 module AdventOfCode2020
   class Day1
     def call(entries)
-      entries = find_two_enties(entries)
+      numbers = FindNumbers.new.find(entries)
 
-      entries[0] * entries[1]
+      numbers[0] * numbers[1]
     end
+  end
 
-    private
-
-    def find_two_enties(entries)
+  class FindNumbers
+    def find(entries)
       # Please refactor me
       for entry in entries
         for y in entries
