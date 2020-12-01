@@ -1,5 +1,6 @@
 require "bundler/setup"
 require "advent_of_code_2020"
+require "advent_of_code_2020/day1"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
