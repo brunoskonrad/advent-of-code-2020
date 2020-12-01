@@ -1,9 +1,18 @@
 module AdventOfCode2020
   class Day1
-    def call(entries)
+    def call()
+      entries = LoadInput.new.load_from_txt_file()
       numbers = FindNumbers.new.find(entries)
 
       numbers[0] * numbers[1]
+    end
+  end
+
+  class LoadInput
+    def load_from_txt_file()
+      day1_input = File.new("input/day1.txt")
+
+      day1_input.read.split(/\n/).map(&:strip).map(&:to_i)
     end
   end
 
