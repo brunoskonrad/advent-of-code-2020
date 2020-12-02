@@ -6,7 +6,7 @@ module AdventOfCode2020
       def initialize(password_entry)
         password_parts = password_entry.split(":").map(&:strip)
 
-        @corporate_policy = CorporatePolicy.new(password_parts[0])
+        @corporate_policy = SledRentalPlaceCorporatePolicy.new(password_parts[0])
         @password = password_parts[1]
       end
 
@@ -15,7 +15,7 @@ module AdventOfCode2020
       end
     end
 
-    class CorporatePolicy
+    class SledRentalPlaceCorporatePolicy
       def initialize(policy)
         parts = policy.split(" ")
 

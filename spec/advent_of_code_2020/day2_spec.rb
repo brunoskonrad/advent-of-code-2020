@@ -26,7 +26,7 @@ RSpec.describe AdventOfCode2020::Day2::Password do
   end
 end
 
-RSpec.describe AdventOfCode2020::Day2::CorporatePolicy do
+RSpec.describe AdventOfCode2020::Day2::SledRentalPlaceCorporatePolicy do
   describe "#validate" do
     it "returns true if given string is valid" do
       subject = described_class.new("1-3 a")
