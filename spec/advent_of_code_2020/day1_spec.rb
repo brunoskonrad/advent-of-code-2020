@@ -13,15 +13,25 @@ RSpec.describe AdventOfCode2020::Day1 do
 end
 
 RSpec.describe AdventOfCode2020::FindNumbers do
-  describe "#find" do
-    subject {
-      described_class.new
-    }
+  subject {
+    described_class.new
+  }
 
-    it "finds the two entry values that sum to 2020" do
+  describe "#find" do
+    context "when looking for 2 numbers" do
       fixture = [1721, 979, 366, 299, 675, 1456]
 
-      expect(subject.find(fixture)).to eq([1721, 299])
+      it "finds the two entry values that sum to 2020" do
+        expect(subject.find(fixture, 2)).to eq([1721, 299])
+      end
+    end
+
+    context "when looking for 3 numbers" do
+      fixture = [1721, 979, 366, 299, 675, 1456]
+
+      it "finds the three entry values that sum to 2020" do
+        expect(subject.find(fixture, 3)).to eq([979,366, 675])
+      end
     end
   end
 end
