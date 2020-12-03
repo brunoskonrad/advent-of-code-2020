@@ -43,7 +43,7 @@ module Day3
     end
   end
 
-  class World
+  class Ride
     attr_reader :collided_trees_count
 
     def initialize(grid, vehicle)
@@ -68,7 +68,7 @@ module Day3
 
   def self.main
     input = File.new("input/day3.txt").read
-    world = World.new(
+    world = Ride.new(
       Grid.new(input),
       Toboggan.new(0, 0)
     )

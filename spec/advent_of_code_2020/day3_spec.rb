@@ -56,7 +56,7 @@ RSpec.describe Day3::Toboggan do
   end
 end
 
-RSpec.describe Day3::World do
+RSpec.describe Day3::Ride do
   let(:fixture) {
     File.new("input/day3_fixture.txt").read
   }
