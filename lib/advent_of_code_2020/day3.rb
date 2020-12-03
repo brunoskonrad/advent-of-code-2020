@@ -107,19 +107,10 @@ module Day3
     ride4 = Ride.new(grid, TobogganFactory.version_4)
     ride5 = Ride.new(grid, TobogganFactory.version_5)
 
-    ride1.run
-    ride2.run
-    ride3.run
-    ride4.run
-    ride5.run
+    rides = [ride1, ride2, ride3, ride4, ride5]
 
-    output = [
-      ride1.collided_trees_count,
-      ride2.collided_trees_count,
-      ride3.collided_trees_count,
-      ride4.collided_trees_count,
-      ride5.collided_trees_count,
-    ].reduce(1, &:*)
+    rides.each(&:run)
+    output = rides.map(&:collided_trees_count).reduce(1, &:*)
 
     p output
   end
