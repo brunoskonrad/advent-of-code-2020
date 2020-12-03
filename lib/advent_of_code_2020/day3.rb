@@ -32,14 +32,39 @@ module Day3
   class Toboggan
     attr_reader :x, :y
 
-    def initialize(x, y)
+    def initialize(x, y, move_x = 3, move_y = 1)
       @x = x
       @y = y
+
+      @move_x = move_x
+      @move_y = move_y
     end
 
     def move
-      @x += 3
-      @y += 1
+      @x += @move_x
+      @y += @move_y
+    end
+  end
+
+  class TobogganFactory
+    def self.version_1
+      Toboggan.new(0, 0, 1, 1)
+    end
+
+    def self.version_2
+      Toboggan.new(0, 0, 3, 1)
+    end
+
+    def self.version_3
+      Toboggan.new(0, 0, 5, 1)
+    end
+
+    def self.version_4
+      Toboggan.new(0, 0, 7, 1)
+    end
+
+    def self.version_5
+      Toboggan.new(0, 0, 1, 2)
     end
   end
 
@@ -60,22 +85,43 @@ module Day3
     end
 
     def run
-      while @vehicle.y <= @grid.rows - 1
+      while vehicle_in_grid?
         tick
       end
+    end
+
+    private
+
+    def vehicle_in_grid?
+      @vehicle.y <= @grid.rows - 1
     end
   end
 
   def self.main
     input = File.new("input/day3.txt").read
-    world = Ride.new(
-      Grid.new(input),
-      Toboggan.new(0, 0)
-    )
+    grid = Grid.new(input)
 
-    world.run
+    ride1 = Ride.new(grid, TobogganFactory.version_1)
+    ride2 = Ride.new(grid, TobogganFactory.version_2)
+    ride3 = Ride.new(grid, TobogganFactory.version_3)
+    ride4 = Ride.new(grid, TobogganFactory.version_4)
+    ride5 = Ride.new(grid, TobogganFactory.version_5)
 
-    p world.collided_trees_count
+    ride1.run
+    ride2.run
+    ride3.run
+    ride4.run
+    ride5.run
+
+    output = [
+      ride1.collided_trees_count,
+      ride2.collided_trees_count,
+      ride3.collided_trees_count,
+      ride4.collided_trees_count,
+      ride5.collided_trees_count,
+    ].reduce(1, &:*)
+
+    p output
   end
 
 end
